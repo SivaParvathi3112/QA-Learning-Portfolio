@@ -21,31 +21,37 @@ The Software Development Life Cycle (SDLC) describes the phases used to deliver 
 
 
 In Planning phase 
+
 Description:Decide what to build and why.
 Tester Responsibilities:
 Collaborate with stakeholders, help define the test strategy, estimate testing effort, and participate in risk analysis.
 
 In Defining phase
+
 Description:Refine and document requirements and design
 Tester Responsibilities:
 Review requirements, highlight ambiguities, help make requirements testable, and update risk analysis.
 
 In Building phase
+
 Description:Developers implement the solution.
 Tester Responsibilities:
 Prepare test cases, test data, and test environments; support developers with unit‑test ideas when needed.
 
 In Testing phase
+
 Description:Verify that the system works as expected.
 Tester Responsibilities:
 Execute test cases, log defects, retest fixes, run regression tests, and report test results.
 
 In Deploying phase
+
 Description:Release the software to users.
 Tester Responsibilities:
 Run smoke or sanity tests on the deployed build and support user acceptance testing where needed.
 
 In Maintaining phase
+
 Description:Improve and support the live system.
 Tester Responsibilities:
 Test bug fixes and enhancements, perform regression testing, and help monitor quality in production.
