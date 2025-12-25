@@ -120,3 +120,196 @@ When a requirement is ambiguous, a tester can use a simple template to ask for c
 
 - **Decision / final wording:**  
   Capture the agreed final text so everyone can use the same requirement going 
+
+
+
+  # 4.Black‑box vs White‑box Testing (Login Example)
+
+## Short definitions
+
+**Black‑box testing**  
+Black‑box testing is a technique where the tester does not look at the internal code and tests the system from a user point of view, focusing on inputs and outputs.
+
+**White‑box testing**  
+White‑box testing is a technique where tests are designed with knowledge of the internal code and logic, and the tester verifies that each important path in the code works as expected.
+
+---
+
+## Quick comparison
+
+| Aspect          | Black‑box Testing                          | White‑box Testing                             |
+|-----------------|--------------------------------------------|-----------------------------------------------|
+| Code knowledge  | Not required                               | Required                                      |
+| Main focus      | User behaviour, inputs and outputs         | Internal logic, branches, and conditions      |
+| Typical role    | Tester / QA engineer                       | Developer or technically strong tester        |
+| Level           | System / integration / acceptance tests    | Unit / component tests                        |
+
+---
+
+## Login example – Black‑box tests
+
+Requirement: *Login ID must be 6–10 characters.*
+
+From a black‑box point of view, the tester only sees the login screen and tests different inputs:
+
+1. Login ID with **6 characters** → should be accepted and allow login.  
+2. Login ID with **5 characters** → should be rejected with a validation message.  
+3. Login ID with **10 characters** → should be accepted and allow login.  
+4. Login ID with **11 characters** → should be rejected.  
+5. Empty Login ID → should be rejected.  
+6. Login ID with only special characters → should be rejected.  
+
+Here the tester does not care how the validation is implemented in code; only the behaviour matters.
+
+---
+
+## Login example – White‑box tests
+
+For the same login feature, a white‑box view looks inside the code.  
+Examples of what to test:
+
+- Ensure each branch of the length check is executed:
+  - `< 6`, `6–10`, and `> 10`.  
+- Ensure all conditions for username and password checks are covered:
+  - Valid username + valid password.  
+  - Valid username + invalid password.  
+  - Invalid username + any password.  
+
+These tests are usually written as **unit tests** or similar, and require access to, and understanding of, the login function’s code.
+
+---
+
+## When to use which
+
+- Use **black‑box testing** when you want to verify the feature from the user’s perspective, such as on the full web application.  
+- Use **white‑box testing** when you have access to the code and want to make sure every important path and condition is executed, for example at unit or component level.
+
+As a C++ developer, understanding code and control flow helps a lot with white‑box and unit testing, because it is easier to see which branches, loops, and edge cases need additional tests and to communicate these with developers.
+
+
+
+# 05_functional_vs_nonfunctional.md.
+# Functional vs Non‑functional Testing
+
+## Short definitions
+
+**Functional testing**  
+Functional testing checks *what* the system does by verifying that each feature behaves according to the business requirements. It focuses on actions like money transfer, account balance, login, and form submission.
+
+**Non‑functional testing**  
+Non‑functional testing checks *how well* the system works under different conditions. It covers performance, usability, reliability, security, and visual aspects such as layout and alignment.
+
+---
+
+## Examples for a banking web application
+
+### Functional test examples
+
+1. Verify that a user can **transfer money** from one account to another and the balances are updated correctly.  
+2. Verify that the **account balance** shown on the dashboard is correct after recent transactions.  
+3. Verify that a user can **apply for a credit card** and the application is saved in the system.  
+4. Verify that a **new bank account** can be created with valid customer details.
+
+### Non‑functional test examples
+
+1. Check how quickly the **dashboard page loads when 100 users** are logged in at the same time (performance / load test).  
+2. Verify that **page layout and images** are properly aligned on different screen sizes and browsers (usability / compatibility).  
+3. Observe whether the system **crashes or hangs** under high load or after long use (reliability / stability).  
+
+---
+
+## Why non‑functional tests matter for user satisfaction
+
+Even if all features work functionally, users will be unhappy if the system is slow, confusing, or unstable.  
+Non‑functional testing ensures that:
+
+- Pages load fast enough.  
+- The layout is clear and easy to use.  
+- The system does not hang or crash during important actions, such as a big sale or end‑of‑month payments.
+
+This protects both user satisfaction and the company’s reputation.
+
+---
+
+## Positive / Negative non‑functional examples
+
+Examples of **non‑functional problems** that can hurt user experience:
+
+1. The web page **hangs** after the user clicks the Login button.  
+2. Submitting a form takes a **very long time**, so users think it failed.  
+3. Page **alignment is broken**, with buttons or input fields overlapping.  
+4. An **image overlaps text**, making labels or messages hard to read.
+
+A well‑tested system should avoid these issues and provide a fast, stable, and visually clear experience.
+
+
+
+# 06_bva_ep_password.md
+
+## Equivalence Partitioning (EP)
+
+Equivalence Partitioning groups input values into partitions where all values in the same group are expected to behave the same. Instead of testing every possible value, we choose one representative value from each partition.
+
+**Requirement:** “Password must be 8–16 characters.”
+
+We can define these partitions:
+
+1. **Fewer than 8 characters** → Invalid  
+2. **Between 8 and 16 characters (inclusive)** → Valid  
+3. **More than 16 characters** → Invalid  
+
+**EP example test values:**
+
+- Test 1: 5‑character password → **Invalid**  
+- Test 2: 10‑character password → **Valid**  
+- Test 3: 20‑character password → **Invalid**
+
+---
+
+## Boundary Value Analysis (BVA)
+
+Boundary Value Analysis focuses on values at the edges of the valid range because many defects appear exactly at these boundaries.
+
+For the same requirement, important boundaries are **8** (minimum) and **16** (maximum).
+
+**BVA test cases:**
+
+1. 7 characters → just below minimum → **Invalid**  
+2. 8 characters → minimum → **Valid**  
+3. 9 characters → just above minimum → **Valid**  
+4. 15 characters → just below maximum → **Valid**  
+5. 16 characters → maximum → **Valid**  
+6. 17 characters → just above maximum → **Invalid**
+
+Using EP plus BVA gives good coverage with a small number of tests.
+text
+# 07_decision_table_discount.md
+
+## What is Decision Table Testing?
+
+Decision Table Testing is a technique used when the outcome depends on combinations of different conditions. It helps ensure that **every combination** of conditions and its expected result is covered by at least one test case.
+
+---
+
+## Example discount rule
+
+Assume this simple business rule:
+
+- Customer types: **Regular** or **Premium**  
+- Order amount condition: **amount ≥ 1000**  
+- Discount rules:  
+  - Regular customers: **no discount**.  
+  - Premium customers: **5% discount** if order amount ≥ 1000, otherwise 0%.
+
+---
+
+## Decision table
+
+| Case | Customer type | Order amount ≥ 1000? | Expected discount |
+|------|---------------|----------------------|-------------------|
+| 1    | Regular       | No                   | 0%                |
+| 2    | Regular       | Yes                  | 0%                |
+| 3    | Premium       | No                   | 0%                |
+| 4    | Premium       | Yes                  | 5%                |
+
+Each row in the table can be turned into one test case to make sure the system applies the correct discount for every combination of customer type and order amount.
