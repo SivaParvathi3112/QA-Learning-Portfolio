@@ -5,41 +5,9 @@ Practise classes, methods, and returning values.
 
 ---
 
-## Your Solution (Excellent! ✅)
 
-```csharp
-using System;
 
-public class Calculator
-{
-    public int Add(int val1, int val2)
-    {
-        return val1 + val2;
-    }
-    
-    public int Subtract(int val1, int val2)
-    {
-        return val1 - val2;
-    }
-    
-    public int Multiply(int val1, int val2)
-    {
-        return val1 * val2;
-    }
-    
-    public static void Main(string[] args)
-    {
-        Calculator ObjAdd = new Calculator();
-        Console.WriteLine(ObjAdd.Add(10, 20));
-        Console.WriteLine(ObjAdd.Subtract(200, 100));
-        Console.WriteLine(ObjAdd.Multiply(10, 20));
-    }
-}
-```
-
----
-
-## Improved Solution (More Readable)
+##  Solution
 
 ```csharp
 using System;
@@ -74,26 +42,7 @@ public class Calculator
         Console.WriteLine($"Multiply(10, 20) = {product}");
     }
 }
-```
 
----
-
-## What Changed?
-
-1. **Naming convention:** Changed `ObjAdd` to `calculator` (lowercase, more professional).
-
-2. **Stored results in variables** before printing:
-   ```csharp
-   int sum = calculator.Add(10, 20);
-   Console.WriteLine($"Add(10, 20) = {sum}");
-   ```
-   This is clearer and more readable than printing directly.
-
-3. **String interpolation** with labels so output is self-explanatory:
-   - ❌ Old output: `30` (what does this mean?)
-   - ✅ New output: `Add(10, 20) = 30` (clear and informative)
-
----
 
 ## Output
 
