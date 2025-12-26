@@ -5,45 +5,8 @@ Practise collections and `foreach` loops.
 
 ---
 
-## Your Solution (Works, but Outdated ⚠️)
 
-```csharp
-using System;
-using System.Collections;
-
-public class Calculator
-{
-    public static void Main(string[] args)
-    {
-        ArrayList CountryNames = new ArrayList();
-        CountryNames.Add("India");
-        CountryNames.Add("Malta");
-        CountryNames.Add("Italy");
-        CountryNames.Add("Spain");
-        CountryNames.Add("Japan");
-        
-        foreach(string item in CountryNames)
-        {
-            Console.WriteLine(item);
-        }
-    }
-}
-```
-
----
-
-## ⚠️ Problem with Your Solution
-
-You used **`ArrayList`**, which is **deprecated** (old, not recommended).
-
-**Why it's a problem:**
-- `ArrayList` is **not type-safe** — it can store any type, leading to runtime errors.
-- Modern C# uses **`List<T>`** which is type-safe and faster.
-- In Selenium automation, you'll work with typed lists like `List<IWebElement>`.
-
----
-
-## ✅ Improved Solution (Modern C#)
+##  Solution
 
 ```csharp
 using System;
@@ -73,38 +36,7 @@ public class CountryList
 
 ---
 
-## What Changed?
 
-1. **`List<string>` instead of `ArrayList`:**
-   ```csharp
-   ❌ ArrayList CountryNames = new ArrayList();
-   ✅ List<string> countryNames = new List<string>();
-   ```
-   - `List<T>` is **type-safe** (only stores strings).
-   - Faster and more modern.
-
-2. **Collection initializer** (cleaner syntax):
-   ```csharp
-   List<string> countryNames = new List<string>()
-   {
-       "India",
-       "Malta",
-       "Italy",
-       "Spain",
-       "Japan"
-   };
-   ```
-   Instead of calling `.Add()` five times.
-
-3. **Better naming convention:**
-   - ❌ `CountryNames` (PascalCase is for classes, not variables)
-   - ✅ `countryNames` (camelCase for local variables)
-
-4. **Added a header and formatting** for readability.
-
-5. **Using `System.Collections.Generic`** instead of `System.Collections`.
-
----
 
 ## Output
 
