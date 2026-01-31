@@ -1,9 +1,9 @@
 # QA-Learning-Portfolio
 Personal QA learning portfolio with testing theory, examples, and practice exercises.
 
-# 01_role_of_testing.md
+# 01_role_of_testing
 
-## Why testing is important
+## Why testing is important?
 
 Software testing is the process of checking whether a system behaves as expected and meets user and business requirements. It helps us find defects before the software reaches real users, which reduces project risk and improves product quality.
 
@@ -13,7 +13,7 @@ Testing is also important for cost and reputation. By running different kinds of
 
 Imagine an e‑commerce site where 1,000 customers try to buy a product at the same time during a big sale. If performance and load testing were not done, the checkout page might hang or crash under this traffic. Customers would be frustrated, some orders might fail, and the company could lose sales, discounts, and customer trust because the system was not tested for this situation.
 text
-# 02_sdlc_phases.md
+
 
 ## SDLC phases and tester responsibilities
 
@@ -56,7 +56,7 @@ Description:Improve and support the live system.
 Tester Responsibilities:
 Test bug fixes and enhancements, perform regression testing, and help monitor quality in production.
 
-## Why early involvement reduces cost
+## Why early involvement reduces cost?
 
 When testers are involved early in the SDLC, they can find problems in requirements or design before code is written. Fixing an issue at this stage usually means only updating documents, which is much cheaper than changing code, retesting, and repairing data later.
 
@@ -71,7 +71,7 @@ If the same defect is found after release, the team may need emergency code chan
 
 The idea is that the later a defect is found, the more people, time, and rework are involved, so the cost grows significantly.
 text
-# 03_srs_requirements.md
+# 03_srs_requirements
 
 ## Definition and importance of SRS
 
@@ -188,7 +188,7 @@ As a C++ developer, understanding code and control flow helps a lot with white�
 
 
 
-# 05_functional_vs_nonfunctional.md.
+# 05_functional_vs_nonfunctional
 # Functional vs Non‑functional Testing
 
 ## Short definitions
@@ -244,7 +244,7 @@ A well‑tested system should avoid these issues and provide a fast, stable, and
 
 
 
-# 06_bva_ep_password.md
+# 06_bva_ep_password
 
 ## Equivalence Partitioning (EP)
 
@@ -283,7 +283,7 @@ For the same requirement, important boundaries are **8** (minimum) and **16** (m
 
 Using EP plus BVA gives good coverage with a small number of tests.
 text
-# 07_decision_table_discount.md
+# 07_decision_table_discount
 
 ## What is Decision Table Testing?
 
