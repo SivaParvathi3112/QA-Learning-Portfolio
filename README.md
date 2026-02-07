@@ -12,6 +12,7 @@ This repository documents my transition from **C++ Maintenance** to **QA Automat
 ## 🎯 What's Inside?
 Based on my coursework with Rahul Shetty, this portfolio includes:
 * **UI Interactions:** Handling child windows, frames, and alerts.
+https://github.com/SivaParvathi3112/QA-Learning-Portfolio/blob/main/section_9_handling_child_windows.md
 * **Synchronization:** Mastery of implicit and explicit waits for stable tests.
 * **Component Testing:** Automating complex dropdowns, checkboxes, and radio buttons.
 * **Logic-Heavy Tasks:** Using my DSA background to solve complex locator strategies (XPath/CSS).
