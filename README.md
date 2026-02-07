@@ -2,7 +2,7 @@
 
 ## 📖 Overview
 This repository documents my transition from **C++ Maintenance** to **QA Automation/SDET**. I am leveraging my 5 years of professional engineering logic to build robust automated test suites using the C# stack.
-
+I used AI as a pair-programmer to document my solutions and provide code reviews, helping me refine my logic while transitioning from C++ to C#.
 ## 🛠️ Tech Stack
 * **Language:** C#
 * **Framework:** Selenium WebDriver
