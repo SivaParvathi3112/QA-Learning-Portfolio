@@ -43,7 +43,7 @@ namespace SeleniumLearning
             Assert.That(signin.Displayed, Is.True, "signin button is not visible");
             Assert.That(checkbox.Displayed, Is.True, "checkbox is not visible");
 
-            Console.WriteLine("✅ Task 1 PASSED: All locators found successfully!");
+            Console.WriteLine(" Task 1 PASSED: All locators found successfully!");
         }
 
         // ============ TASK 2: Web Elements Attributes ============
@@ -64,7 +64,7 @@ namespace SeleniumLearning
             Assert.That(loginButtonValue, Does.Contain("SignIn"), "Button text mismatch");
             Assert.That(checkboxType, Is.EqualTo("checkbox"), "Checkbox type mismatch");
 
-            Console.WriteLine("✅ Task 2 PASSED: All attributes verified!");
+            Console.WriteLine(" Task 2 PASSED: All attributes verified!");
         }
 
         // ============ TASK 3: Advanced CSS Selectors ============
@@ -89,7 +89,7 @@ namespace SeleniumLearning
             var elem4 = driver.FindElement(By.CssSelector("input[type='password'][name='password']"));
             Console.WriteLine("4. Multiple attributes: " + elem4.GetAttribute("name"));
 
-            Console.WriteLine("✅ Task 3 PASSED: All advanced selectors working!");
+            Console.WriteLine(" Task 3 PASSED: All advanced selectors working!");
         }
 
         // ============ TASK 4: NUnit Assertions Practice ============
@@ -115,21 +115,21 @@ namespace SeleniumLearning
 
             // Assertion 1: Is.EqualTo (Exact match)
             Assert.That(nameAttr, Is.EqualTo("username"), "Username name mismatch");
-            Console.WriteLine("✅ Assertion 1 PASSED: Is.EqualTo");
+            Console.WriteLine(" Assertion 1 PASSED: Is.EqualTo");
 
             // Assertion 2: Does.Contain (Partial match)
             Assert.That(nameAttr, Does.Contain("user"), "Username doesn't contain 'user'");
-            Console.WriteLine("✅ Assertion 2 PASSED: Does.Contain");
+            Console.WriteLine(" Assertion 2 PASSED: Does.Contain");
 
             // Assertion 3: Is.True (Boolean condition)
             Assert.That(username.Displayed, Is.True, "Username not displayed");
-            Console.WriteLine("✅ Assertion 3 PASSED: Is.True");
+            Console.WriteLine(" Assertion 3 PASSED: Is.True");
 
             // Assertion 4: Is.False (Boolean condition)
             Assert.That(username.Selected, Is.False, "Username should not be selected");
-            Console.WriteLine("✅ Assertion 4 PASSED: Is.False");
+            Console.WriteLine(" Assertion 4 PASSED: Is.False");
 
-            Console.WriteLine("✅ Task 4 PASSED: All assertions successful!");
+            Console.WriteLine(" Task 4 PASSED: All assertions successful!");
         }
 
         // ============ TASK 5: User Interactions ============
@@ -143,19 +143,19 @@ namespace SeleniumLearning
             var usernameField = driver.FindElement(By.Id("username"));
             usernameField.Clear();
             usernameField.SendKeys("rahulshetty123");
-            Console.WriteLine("✅ Step 1: Username typed: " + usernameField.GetAttribute("value"));
+            Console.WriteLine(" Step 1: Username typed: " + usernameField.GetAttribute("value"));
 
             // 2. TYPE password
             var passwordField = driver.FindElement(By.Name("password"));
             passwordField.Clear();
             passwordField.SendKeys("hello123");
-            Console.WriteLine("✅ Step 2: Password typed: " + passwordField.GetAttribute("value"));
+            Console.WriteLine(" Step 2: Password typed: " + passwordField.GetAttribute("value"));
 
             // 3. SELECT dropdown option
             var selectDropdown = driver.FindElement(By.XPath("//select[@class='form-control']"));
             var option = selectDropdown.FindElement(By.XPath("//option[@value='teach']"));
             option.Click();
-            Console.WriteLine("✅ Step 3: Dropdown option selected: teach");
+            Console.WriteLine(" Step 3: Dropdown option selected: teach");
 
             // 4. CLICK checkbox (terms)
             var termsCheckbox = driver.FindElement(By.CssSelector("input[name='terms']"));
@@ -164,12 +164,12 @@ namespace SeleniumLearning
                 termsCheckbox.Click();
             }
             Assert.IsTrue(termsCheckbox.Selected, "Checkbox not checked!");
-            Console.WriteLine("✅ Step 4: Terms checkbox CHECKED");
+            Console.WriteLine(" Step 4: Terms checkbox CHECKED");
 
             // 5. CLICK Sign In button
             var loginBtn = driver.FindElement(By.CssSelector("input[name='signin']"));
             loginBtn.Click();
-            Console.WriteLine("✅ Step 5: Sign In button clicked");
+            Console.WriteLine(" Step 5: Sign In button clicked");
 
             // 6. VERIFY error message appears
             Thread.Sleep(2000);
@@ -177,14 +177,14 @@ namespace SeleniumLearning
             {
                 var errorMsg = driver.FindElement(By.XPath("//div[@class='alert alert-danger']"));
                 Assert.That(errorMsg.Displayed, Is.True, "Error message not shown!");
-                Console.WriteLine("✅ Step 6: Error message displayed (Expected - invalid credentials)");
+                Console.WriteLine(" Step 6: Error message displayed (Expected - invalid credentials)");
             }
             catch
             {
                 Console.WriteLine("⚠️  Error message not found - page may have changed");
             }
 
-            Console.WriteLine("✅ Task 5 PASSED: All interactions completed!");
+            Console.WriteLine(" Task 5 PASSED: All interactions completed!");
         }
 
         [TearDown]
@@ -200,7 +200,7 @@ namespace SeleniumLearning
 
 ## 📚 Section 5 Summary
 
-### Task 1: Locators Identification ✅
+### Task 1: Locators Identification 
 **Goal:** Find elements using 4 different locator strategies
 
 | Locator Type | Syntax | Example |
@@ -214,7 +214,7 @@ namespace SeleniumLearning
 
 ---
 
-### Task 2: Web Elements Attributes ✅
+### Task 2: Web Elements Attributes 
 **Goal:** Extract and verify element attributes
 
 ```csharp
@@ -228,7 +228,7 @@ string value = element.GetAttribute("attributeName");
 
 ---
 
-### Task 3: Advanced CSS Selectors ✅
+### Task 3: Advanced CSS Selectors 
 **Goal:** Master modern CSS selector patterns
 
 **3 Core Patterns:**
@@ -253,7 +253,7 @@ string value = element.GetAttribute("attributeName");
 
 ---
 
-### Task 4: NUnit Assertions ✅
+### Task 4: NUnit Assertions 
 **Goal:** Verify test results with assertions
 
 **4 Main Assertion Types:**
@@ -265,11 +265,11 @@ string value = element.GetAttribute("attributeName");
 | **True/False** | `Is.True` / `Is.False` | Boolean conditions |
 | **Displayed** | `element.Displayed` | Check if element visible |
 
-**Rule:** If assertion fails → Test FAILS (Red ❌)
+**Rule:** If assertion fails → Test FAILS 
 
 ---
 
-### Task 5: User Interactions ✅
+### Task 5: User Interactions 
 **Goal:** Simulate real user actions (type, click, select)
 
 **4 Key Methods:**
@@ -285,30 +285,6 @@ string value = element.GetAttribute("attributeName");
 
 ---
 
-## 🎯 Key Takeaways
 
-✅ **Best Practices:**
-- Always use `Clear()` before `SendKeys()` 
-- Use `Thread.Sleep(2000)` for page loads
-- Assertions should verify **what you expect**
-- CSS selectors > XPath (faster, cleaner)
 
-❌ **Common Mistakes:**
-- Using XPath when CSS exists
-- Forgetting `[Test]` attribute
-- Not using `Clear()` before typing
-- Assertions on wrong data type
 
----
-
-## 📊 Test Results
-
-**All 5 Tasks: GREEN ✅**
-
-- Task 1 Status: PASSED ✅
-- Task 2 Status: PASSED ✅
-- Task 3 Status: PASSED ✅
-- Task 4 Status: PASSED ✅
-- Task 5 Status: PASSED ✅
-
-**Ready for Section 6!** 🚀
