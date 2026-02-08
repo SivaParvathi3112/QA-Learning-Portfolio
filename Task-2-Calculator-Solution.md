@@ -76,24 +76,6 @@ public class Calculator
 }
 ```
 
----
-
-## What Changed?
-
-1. **Naming convention:** Changed `ObjAdd` to `calculator` (lowercase, more professional).
-
-2. **Stored results in variables** before printing:
-   ```csharp
-   int sum = calculator.Add(10, 20);
-   Console.WriteLine($"Add(10, 20) = {sum}");
-   ```
-   This is clearer and more readable than printing directly.
-
-3. **String interpolation** with labels so output is self-explanatory:
-   - ❌ Old output: `30` (what does this mean?)
-   - ✅ New output: `Add(10, 20) = 30` (clear and informative)
-
----
 
 ## Output
 
