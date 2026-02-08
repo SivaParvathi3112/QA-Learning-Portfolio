@@ -4,17 +4,6 @@ Complete working C# code for **Section 8 Tasks (8.1, 8.2, 8.3, 8.4)** covering J
 
 ---
 
-## 📋 Task Overview
-
-| Task | Focus | Status | Concepts |
-|------|-------|--------|----------|
-| 8.1 | JavaScript Alerts | ✅ PASSED | Alert handling, Text extraction |
-| 8.2 | Autosuggest Dropdown | ✅ PASSED | Waits, Dynamic lists, Negative test |
-| 8.3 | Actions Class | ✅ PASSED | Hover, Drag & Drop |
-| 8.4 | iFrames | ✅ PASSED | Frame switching, JavaScript execution |
-
----
-
 ## Task 8.1 - JavaScript Alerts
 
 **Goal:** Handle JavaScript alerts - accept alert, verify text content
@@ -27,38 +16,32 @@ public void Alerts()
 {
     driver.Url = "https://rahulshettyacademy.com/AutomationPractice/";
     
-    // ✅ Enter name in text field
+    //  Enter name in text field
     IWebElement nameField = driver.FindElement(By.Id("name"));
     nameField.SendKeys("Siva");
     Console.WriteLine("✓ Name entered: Siva");
     
-    // ✅ Click button to trigger alert
+    //  Click button to trigger alert
     IWebElement confirmBtn = driver.FindElement(By.Id("confirmbtn"));
     confirmBtn.Click();
     Console.WriteLine("✓ Confirm button clicked - Alert triggered");
     
-    // ✅ Switch to alert and get text
+    //  Switch to alert and get text
     IAlert alert = driver.SwitchTo().Alert();
     string alertText = alert.Text;
     Console.WriteLine($"✓ Alert text captured: {alertText}");
     
-    // ✅ Accept the alert
+    //  Accept the alert
     alert.Accept();
     Console.WriteLine("✓ Alert accepted");
     
-    // ✅ Verify name appears in alert text
+    //  Verify name appears in alert text
     StringAssert.Contains("Siva", alertText, "Alert should contain the entered name");
     Console.WriteLine("✓ Assertion passed - Alert contains 'Siva'");
 }
 ```
 
-### Key Locators Used
 
-| Element | Locator Type | Locator Value |
-|---------|--------------|---------------|
-| Name Input | ID | `name` |
-| Confirm Button | ID | `confirmbtn` |
-| Alert | Selenium Alert API | `driver.SwitchTo().Alert()` |
 
 ### Alert Handling Methods
 
@@ -76,14 +59,7 @@ driver.SwitchTo().Alert().Dismiss();
 driver.SwitchTo().Alert().SendKeys("text");
 ```
 
-### Expected Output
-```
-✓ Name entered: Siva
-✓ Confirm button clicked - Alert triggered
-✓ Alert text captured: Hello Siva, share this practice page and share your knowledge
-✓ Alert accepted
-✓ Assertion passed - Alert contains 'Siva'
-Task 8.1 PASSED - Alert handling verified!
+
 ```
 
 ---
@@ -100,16 +76,16 @@ public void AutoSuggestiveDropdown()
 {
     driver.Url = "https://rahulshettyacademy.com/AutomationPractice/";
     
-    // ✅ Enter country text for autocomplete
+    //  Enter country text for autocomplete
     IWebElement countryInput = driver.FindElement(By.Id("autocomplete"));
     countryInput.SendKeys("ind");
     Console.WriteLine("✓ Typed 'ind' in country field");
     
-    // ✅ Wait for suggestions to appear
+    //  Wait for suggestions to appear
     Thread.Sleep(2000); // For autocomplete
     Console.WriteLine("✓ Waited for suggestions to appear");
     
-    // ✅ Find and click matching suggestion
+    //  Find and click matching suggestion
     IList<IWebElement> countryNames = driver.FindElements(By.CssSelector(".ui-menu-item div"));
     Console.WriteLine($"✓ Found {countryNames.Count} suggestions");
     
@@ -123,13 +99,13 @@ public void AutoSuggestiveDropdown()
         }
     }
     
-    // ✅ Verify selection
+    //  Verify selection
     string selectedValue = countryInput.GetAttribute("value");
     Assert.That(selectedValue, Is.EqualTo("India"), 
                 "Selected country should be India");
     Console.WriteLine($"✓ Verified selection: {selectedValue}");
     
-    // ✅ NEGATIVE TEST - Invalid input
+    //  NEGATIVE TEST - Invalid input
     countryInput.Clear();
     countryInput.SendKeys("xyz");
     Thread.Sleep(2000);
@@ -141,44 +117,17 @@ public void AutoSuggestiveDropdown()
 }
 ```
 
-### Key Locators Used
 
-| Element | Locator Type | Locator Value |
-|---------|--------------|---------------|
-| Country Input | ID | `autocomplete` |
-| Suggestions | CSS Selector | `.ui-menu-item div` |
 
-### Assertions Used
 
-```csharp
-Assert.That(selectedValue, Is.EqualTo("India"));
-Assert.That(invalidSuggestions.Count, Is.EqualTo(0));
-```
 
-### Expected Output
-```
-✓ Typed 'ind' in country field
-✓ Waited for suggestions to appear
-✓ Found 2 suggestions
-✓ Selected: India
-✓ Verified selection: India
-✓ Negative test passed - No suggestions for 'xyz'
-Task 8.2 PASSED - Autosuggest dropdown verified!
-```
-
----
-
-## Task 8.3 - Actions Class (Hover, Drag & Drop)
-
-**Goal:** Use Actions class for mouse hover, and drag-drop operations
-
-### Code Implementation
+### 8.3 Code Implementation
 
 ```csharp
 [Test]
 public void TestActions()
 {
-    // ✅ PART 1: HOVER ACTION
+    //  PART 1: HOVER ACTION
     driver.Url = "https://rahulshettyacademy.com/documents-request";
     
     var actions = new Actions(driver);
@@ -200,7 +149,7 @@ public void TestActions()
     actions.MoveToElement(submenu).Click().Perform();
     Console.WriteLine("✓ Clicked submenu item");
     
-    // ✅ PART 2: DRAG & DROP
+    //  PART 2: DRAG & DROP
     driver.Url = "https://demoqa.com/droppable/";
     Console.WriteLine("\n✓ Navigated to drag-drop demo page");
     
@@ -219,42 +168,11 @@ public void TestActions()
 }
 ```
 
-### Key Locators Used
 
-| Element | Locator Type | Locator Value |
-|---------|--------------|---------------|
-| Dropdown Toggle | Class Name | `dropdown-toggle` |
-| Submenu Item | XPath | `//ul[@class='dropdown-menu']/li[1]/a` |
-| Draggable | ID | `draggable` |
-| Droppable | ID | `droppable` |
 
-### Actions Methods Used
 
-```csharp
-// Hover over element
-actions.MoveToElement(element).Perform();
 
-// Click element
-actions.Click(element).Perform();
 
-// Drag and drop
-actions.DragAndDrop(source, target).Perform();
-
-// Combine actions
-actions.MoveToElement(e1).Click().Perform();
-```
-
-### Expected Output
-```
-✓ Hovered over dropdown menu
-✓ Dropdown visible after hover
-✓ Clicked submenu item
-
-✓ Navigated to drag-drop demo page
-✓ Performed drag and drop
-✓ Drop verified: Dropped!
-Task 8.3 PASSED - Actions class verified!
-```
 
 ---
 
@@ -270,30 +188,30 @@ public void TestFrames()
 {
     driver.Url = "https://rahulshettyacademy.com/AutomationPractice/";
     
-    // ✅ Find iframe element
+    //  Find iframe element
     IWebElement scrollFrame = driver.FindElement(By.Id("courses-iframe"));
     Console.WriteLine("✓ Found iframe element");
     
-    // ✅ Scroll into view (iframe might be below viewport)
+    //  Scroll into view (iframe might be below viewport)
     IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
     js.ExecuteScript("arguments[0].scrollIntoView(true);", scrollFrame);
     Console.WriteLine("✓ Scrolled iframe into view");
     
-    // ✅ Switch to iframe by name/ID
+    //  Switch to iframe by name/ID
     driver.SwitchTo().Frame("courses-iframe");
     Console.WriteLine("✓ Switched to iframe context");
     
-    // ✅ Create wait for element inside iframe
+    //  Create wait for element inside iframe
     WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
     
-    // ✅ Interact with element inside iframe
+    //  Interact with element inside iframe
     IWebElement allAccessLink = wait.Until(
         SeleniumExtras.WaitHelpers.ExpectedConditions
             .ElementIsVisible(By.LinkText("All Access Plan")));
     allAccessLink.Click();
     Console.WriteLine("✓ Clicked 'All Access Plan' link inside iframe");
     
-    // ✅ Verify page header inside iframe
+    //  Verify page header inside iframe
     IWebElement framePageHeader = wait.Until(
         SeleniumExtras.WaitHelpers.ExpectedConditions
             .ElementIsVisible(By.TagName("h1")));
@@ -302,11 +220,11 @@ public void TestFrames()
                 "Page header should contain 'ACCESS'");
     Console.WriteLine($"✓ Verified iframe content: {framePageHeader.Text}");
     
-    // ✅ Switch back to parent (default content)
+    //  Switch back to parent (default content)
     driver.SwitchTo().DefaultContent();
     Console.WriteLine("✓ Switched back to parent content");
     
-    // ✅ Verify parent page element still accessible
+    //  Verify parent page element still accessible
     IWebElement practicePageHeader = wait.Until(
         SeleniumExtras.WaitHelpers.ExpectedConditions
             .ElementIsVisible(By.TagName("h1")));
@@ -315,46 +233,6 @@ public void TestFrames()
                 "Parent page header should contain 'Page'");
     Console.WriteLine($"✓ Verified parent content: {practicePageHeader.Text}");
 }
-```
-
-### Key Locators & Methods
-
-| Item | Type | Value |
-|------|------|-------|
-| iFrame | ID | `courses-iframe` |
-| Switch Frame | Method | `driver.SwitchTo().Frame(nameOrId)` |
-| Switch Parent | Method | `driver.SwitchTo().DefaultContent()` |
-| JavaScript | Method | `((IJavaScriptExecutor)driver).ExecuteScript()` |
-
-### iFrame Switching Methods
-
-```csharp
-// Switch by name or ID
-driver.SwitchTo().Frame("frameName");
-
-// Switch by index (0-based)
-driver.SwitchTo().Frame(0);
-
-// Switch by WebElement
-driver.SwitchTo().Frame(element);
-
-// Return to parent
-driver.SwitchTo().DefaultContent();
-
-// Nested iframes
-driver.SwitchTo().Frame(0).SwitchTo().Frame(1);
-```
-
-### Expected Output
-```
-✓ Found iframe element
-✓ Scrolled iframe into view
-✓ Switched to iframe context
-✓ Clicked 'All Access Plan' link inside iframe
-✓ Verified iframe content: Premium Subscription: All Access Plan
-✓ Switched back to parent content
-✓ Verified parent content: Selenium Practice Page
-Task 8.4 PASSED - iFrame handling verified!
 ```
 
 ---
@@ -396,79 +274,4 @@ public void TearDown()
 
 ---
 
-## Best Practices Applied
 
-✅ **Try-Catch for Alerts** - Handle unexpected alerts gracefully  
-✅ **Explicit Waits** - For dynamic elements before interaction  
-✅ **Scroll Before Frame** - Ensure iframe in viewport  
-✅ **Verify State** - Assert after each major action  
-✅ **Return to Parent** - Always switch back from frames  
-✅ **Console Output** - Step-by-step tracking  
-✅ **Meaningful Assertions** - Clear error messages  
-
----
-
-## Common Mistakes to Avoid
-
-❌ Not switching to alert before accepting/dismissing  
-❌ Forgetting to switch back to default content after iframe  
-❌ Not waiting for dropdown suggestions to appear  
-❌ Using Thread.Sleep instead of WebDriverWait  
-❌ Interacting with element not visible (forgot to scroll)  
-❌ Accessing iframe element after switching contexts  
-❌ Not waiting for draggable element to be clickable  
-
----
-
-## Alert Types & Handling
-
-```
-┌─ Simple Alert ─────────────────────────────┐
-│ Just message + OK button                   │
-│ driver.SwitchTo().Alert().Accept();        │
-└─────────────────────────────────────────────┘
-
-┌─ Confirmation Alert ──────────────────────┐
-│ Message + OK/Cancel buttons                │
-│ driver.SwitchTo().Alert().Dismiss();       │
-└─────────────────────────────────────────────┘
-
-┌─ Prompt Alert ────────────────────────────┐
-│ Message + Input field + OK/Cancel          │
-│ driver.SwitchTo().Alert().SendKeys("text");│
-└─────────────────────────────────────────────┘
-```
-
----
-
-## Test Results Summary
-
-```
-═══════════════════════════════════════════════
-          SECTION 8 - ALL TESTS PASSED
-═══════════════════════════════════════════════
-
-✅ Task 8.1 - Alerts                     [PASSED]
-   - Alert text captured and verified
-   - Alert accepted successfully
-   - Name validation in alert text
-
-✅ Task 8.2 - Autosuggest Dropdown       [PASSED]
-   - Suggestions appeared after typing
-   - Selection matched input
-   - Negative test verified no results
-
-✅ Task 8.3 - Actions Class              [PASSED]
-   - Hover action executed
-   - Drag and drop successful
-   - Drop confirmation verified
-
-✅ Task 8.4 - iFrames                    [PASSED]
-   - Frame switching successful
-   - Element interaction inside frame
-   - Return to parent verified
-
-═══════════════════════════════════════════════
-Ready for Section 9! 🚀
-═══════════════════════════════════════════════
-```
