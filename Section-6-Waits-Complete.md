@@ -1,13 +1,11 @@
 # Section 6: Implicit & Explicit Waits - Complete Guide
 
-## 📚 Section 6 Overview
+##  Section 6 Overview
 
 **Topics Covered:**
 - Implicit Wait (Global timeout)
 - Explicit Wait (Specific conditions)
 - Handling async elements
-
-**Duration:** Complete ✅
 
 ---
 
@@ -54,22 +52,22 @@ namespace SeleniumLearning
             // Step 1: Enter Username (implicit wait handles if page slow)
             Console.WriteLine("Step 1: Finding & typing username...");
             driver.FindElement(By.Id("username")).SendKeys("Sivaparvathi");
-            Console.WriteLine("✅ Username entered: Sivaparvathi\n");
+            Console.WriteLine(" Username entered: Sivaparvathi\n");
 
             // Step 2: Enter Password (implicit wait applies here too)
             Console.WriteLine("Step 2: Finding & typing password...");
             driver.FindElement(By.Name("password")).SendKeys("12345");
-            Console.WriteLine("✅ Password entered: 12345\n");
+            Console.WriteLine(" Password entered: 12345\n");
 
             // Step 3: Click Terms Checkbox (implicit wait)
             Console.WriteLine("Step 3: Clicking terms checkbox...");
             driver.FindElement(By.XPath("//div[@class='form-group'][5]/label/span/input")).Click();
-            Console.WriteLine("✅ Terms checkbox clicked\n");
+            Console.WriteLine(" Terms checkbox clicked\n");
 
             // Step 4: Click Login Button (implicit wait)
             Console.WriteLine("Step 4: Clicking login button...");
             driver.FindElement(By.XPath("//input[@type = 'submit']")).Click();
-            Console.WriteLine("✅ Login button clicked\n");
+            Console.WriteLine(" Login button clicked\n");
 
             // ============ EXPLICIT WAIT ============
             // Wait for SPECIFIC condition - element value contains "Sign In"
@@ -82,16 +80,16 @@ namespace SeleniumLearning
                     driver.FindElement(By.Id("SignInBtn")), 
                     "Sign In"
                 ));
-            Console.WriteLine("✅ SignInBtn found with correct text\n");
+            Console.WriteLine(" SignInBtn found with correct text\n");
 
             // Step 6: Get and verify error message
             Console.WriteLine("Step 6: Getting error message...");
             string ErrorMessage = driver.FindElement(By.ClassName("alert")).Text;
-            Console.WriteLine("✅ Error Message: " + ErrorMessage);
+            Console.WriteLine(" Error Message: " + ErrorMessage);
             
             // Verify error message exists (login failed as expected)
             Assert.That(ErrorMessage, Does.Contain("password"));
-            Console.WriteLine("✅ Error message verified\n");
+            Console.WriteLine(" Error message verified\n");
 
             Console.WriteLine("=== Test Complete: PASSED ===");
         }
@@ -182,43 +180,7 @@ wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
 
 ---
 
-## 🎯 Flow of Your Test
 
-```
-SETUP
-  ↓
-Set Implicit Wait = 5 seconds
-  ↓
-TEST STARTS
-  ↓
-Find username (implicit wait: 5 sec max)  ✅ Found immediately
-  ↓
-Type "Sivaparvathi"
-  ↓
-Find password (implicit wait: 5 sec max)  ✅ Found immediately
-  ↓
-Type "12345"
-  ↓
-Find checkbox (implicit wait: 5 sec max)  ✅ Found immediately
-  ↓
-Click checkbox
-  ↓
-Find login button (implicit wait: 5 sec max)  ✅ Found immediately
-  ↓
-Click login button
-  ↓
-[Page processes login attempt...]
-  ↓
-EXPLICIT WAIT STARTS
-Create WebDriverWait (5 seconds)
-Wait for SignInBtn VALUE = "Sign In"  ✅ Condition met
-  ↓
-Find alert message (implicit wait: 5 sec)
-  ↓
-Get error text & verify
-  ↓
-TEST ENDS ✅ PASS
-```
 
 ---
 
@@ -267,78 +229,3 @@ Explicit wait is used when:
 `TextToBePresentInElementValue()` - Waits for element value attribute to contain text
 
 ---
-
-## ✅ Execution Checklist
-
-Before running test:
-- ✅ Import: `using OpenQA.Selenium.Support.UI;`
-- ✅ Import: `using SeleniumExtras.WaitHelpers;`
-- ✅ NuGet Package: `SeleniumExtras` installed
-- ✅ Implicit wait set in SetUp
-- ✅ Explicit wait created with correct timeout
-- ✅ Correct XPath for checkbox: `//div[@class='form-group'][5]/label/span/input`
-- ✅ Correct XPath for button: `//input[@type = 'submit']`
-
----
-
-## 🧪 What This Test Does
-
-1. **Types invalid credentials** (on purpose)
-2. **Submits login form**
-3. **Waits for button** to show "Sign In" (confirmation button is ready)
-4. **Captures error message** (login failed - correct behavior)
-5. **Verifies error text** contains "password" hint
-
-**Expected Result:** ❌ Login fails (invalid credentials) → ✅ Error message shown
-
----
-
-## 📊 Console Output Expected
-
-```
-=== Test Start: Implicit & Explicit Waits ===
-
-Step 1: Finding & typing username...
-✅ Username entered: Sivaparvathi
-
-Step 2: Finding & typing password...
-✅ Password entered: 12345
-
-Step 3: Clicking terms checkbox...
-✅ Terms checkbox clicked
-
-Step 4: Clicking login button...
-✅ Login button clicked
-
-Step 5: Waiting for specific condition...
-✅ SignInBtn found with correct text
-
-Step 6: Getting error message...
-✅ Error Message: [alert text from page]
-✅ Error message verified
-
-=== Test Complete: PASSED ===
-```
-
----
-
-## 🎯 Summary
-
-**Section 6 Complete!** ✅
-
-Your code demonstrates:
-1. ✅ Implicit Wait (global 5 sec in SetUp)
-2. ✅ Explicit Wait (specific condition with TextToBePresentInElementValue)
-3. ✅ Practical login test with error handling
-4. ✅ Element finding under async conditions
-5. ✅ Condition verification
-
-**No additional tasks needed!** This covers the entire concept.
-
----
-
-## 🚀 Ready for Section 7!
-
-Next: Page Object Model (POM) or next topic in your course.
-
-**Status: Section 6 - COMPLETE ✅**
