@@ -101,7 +101,6 @@ public void WindowHandles()
 | **String Split** | Split() method | `text.Split("delimiter")` |
 | **String Trim** | Trim() method | `text.Trim()` |
 | **Array Access** | Index notation | `array[0]` |
-| **Regex Extraction** | Regex.Match() | `Regex.Match(text, pattern)` |
 | **Field Population** | SendKeys() | `element.SendKeys(text)` |
 | **Value Verification** | GetAttribute() | `element.GetAttribute("value")` |
 
