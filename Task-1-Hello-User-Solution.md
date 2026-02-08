@@ -39,21 +39,7 @@ public class HelloWorld
 }
 ```
 
----
 
-## What Changed?
-
-1. **Added a prompt** `"Enter your name:"` so the user knows what to type.
-
-2. **String interpolation** instead of concatenation:
-   - ❌ Old: `"Hello " + name`
-   - ✅ New: `$"Hello, {name}"`
-   
-   String interpolation (`$"..."`) is cleaner, faster, and easier to read.
-
-3. **Declared and assigned in one line** `string name = Console.ReadLine();` instead of two lines.
-
----
 
 ## Output
 
